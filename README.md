@@ -28,7 +28,7 @@ Kalibriert bei 100 % GPU-Volllast:
 | 1900 MHz | ~125.6 W | 70 °C |
 | 1880 MHz | ~123 W | 69 °C |
 | 1800 MHz | ~119 W | 70 °C |
-| **1790 MHz (gewählt)** | **~116 W** | 67 °C |
+| **1750 MHz (gewählt)** | **~110 W** | 65 °C |
 | 1650 MHz | ~99 W | 67 °C |
 | 1500 MHz | ~86 W | 67 °C |
 
