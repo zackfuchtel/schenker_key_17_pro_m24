@@ -7,7 +7,7 @@ Verwaltung des Proxmox-Hosts SCHENKER KEY 17 Pro M24 (EC VK35GTC / LIONVK35, Ton
 Lüfterkurve per EC-Kurven-Upload. Siehe `fan-control.sh`, `fan-control.service`, `ecx`, `fanctl.sh`.
 Installiert unter `/opt/fanctl/`, Unit `fan-control.service` (enabled). Log: `/var/log/fan-control.log`.
 
-## GPU power limit (~100 W)
+## GPU power limit (~99 W)
 
 **Problem:** Die NVIDIA RTX 4080 Laptop GPU (Max-Q, per vfio-PCI an die VM <guest> durchgereicht)
 hat ein **festes TGP**:
@@ -29,9 +29,9 @@ Kalibriert bei 100 % GPU-Volllast:
 | 1880 MHz | ~123 W | 69 °C |
 | 1800 MHz | ~119 W | 70 °C |
 | 1750 MHz | ~110 W | 65 °C |
-| 1675 MHz | ~100.2 W | 64 °C |
-| **1670 MHz (gewählt)** | **~100 W** | 64 °C |
-| 1660 MHz | ~98.3 W | 64 °C |
+| 1670 MHz | ~100.1 W | 64 °C |
+| 1666 MHz | ~100.1 W | 64 °C |
+| **1660 MHz (gewählt)** | **~99.3 W** | 63 °C |
 | 1650 MHz | ~99 W | 64 °C |
 | 1500 MHz | ~86 W | 67 °C |
 
@@ -43,7 +43,7 @@ install -m 0644 gpu-powerlimit.timer /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now gpu-powerlimit.service gpu-powerlimit.timer
 ```
-- setzt Persistence-Mode (`-pm 1`) + `nvidia-smi -lgc 210,1670` (~100 W).
+- setzt Persistence-Mode (`-pm 1`) + `nvidia-smi -lgc 210,1660` (~99 W).
 - läuft einmal beim Boot (Oneshot) und wird vom Timer alle 5 min erneut angewendet (idempotent).
 
 **Hinweis:** Power-Limit ist damit im Gast daemonisiert (nicht am Host möglich — siehe oben).
