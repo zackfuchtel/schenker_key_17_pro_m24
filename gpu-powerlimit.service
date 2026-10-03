@@ -1,0 +1,11 @@
+[Unit]
+Description=GPU power limit via clock cap (~125 W) for RTX 4080 Mobile
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/gpu-powerlimit.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
