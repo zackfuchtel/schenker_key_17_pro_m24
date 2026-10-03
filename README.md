@@ -399,3 +399,11 @@ Live-Check: `nvidia-smi -q -d CLOCK,POWER` → SM-Cap 1650 MHz, ~99 W, ~63 °C u
   und die Firmware nicht verantwortlich machen, wenn ein Lüftertest schiefgeht. Keinerlei Garantie.
 - Schwellen, Zielwerte und Taktgrenzen sind konservative, auf **diesem** Gerät validierte Defaults —
   nach jeder thermischen/mechanischen Änderung neu vermessen.
+
+---
+
+### Keywords / Tags (SEO)
+
+*Laptop fan control Linux, SCHENKER KEY 17 Pro M24, TongFang X370SNx1, Clevo VK35 EC firmware, EC-RAM fan curve, ACPI EC ports 0x62/0x66, TUXEDO Control Center alternative, Proxmox on a laptop, VFIO GPU passthrough, RTX 4080 Mobile Max-Q, NVIDIA power limit, nvidia-smi -lgc clock cap, systemd fan daemon, fan-control.service, laptop thermals, Linux workstation tuning, silence a gaming laptop, GPU temperature cap, EC-ID LIONVK35, FANB curve, ioperm EC access*
+
+*Lüftersteuerung Linux Laptop, SCHENKER KEY 17 Pro M24, TongFang X370SNx1, Clevo VK35 EC-Firmware, EC-RAM-Lüfterkurve, ACPI-EC-Ports 0x62/0x66, TUXEDO Control Center Alternative, Proxmox auf dem Laptop, VFIO-GPU-Passthrough, RTX 4080 Mobile Max-Q, NVIDIA-Leistungslimit, nvidia-smi -lgc Taktlimit, systemd-Lüfter-Daemon, fan-control.service, Laptop-Thermik, Linux-Workstation-Tuning, Gaming-Laptop leiser machen, GPU-Temperatur-Limit, EC-ID LIONVK35, FANB-Kurve, ioperm-EC-Zugriff*
