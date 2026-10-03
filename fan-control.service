@@ -1,0 +1,12 @@
+[Unit]
+Description=EC Fan Control (SCHENKER KEY 17 Pro / Clevo VK35)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/opt/fanctl/fan-control.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
