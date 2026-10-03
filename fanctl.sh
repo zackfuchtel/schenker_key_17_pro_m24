@@ -1,6 +1,6 @@
 #!/bin/bash
 # fanctl.sh - manuelle Steuerung der EC-Luefterkurve (SCHENKER KEY 17 Pro / Clevo VK35)
-# usage: fanctl.sh {idle|mid|max|status}
+# usage: fanctl.sh {idle|lowmid|premid|mid|max|status}
 ECX=/opt/fanctl/ecx
 FANB=$((0xFE0B0300))
 upload(){ # $1 = hex byte (2 Zeichen), $2 = label
@@ -17,11 +17,13 @@ upload(){ # $1 = hex byte (2 Zeichen), $2 = label
   echo "fanctl: Kurve gesetzt ($2, 0x$v)."
 }
 case "$1" in
-  idle)  upload 0A "idle ~2050RPM" ;;
-  mid)   upload 14 "mid ~5120RPM" ;;
-  max)   upload FF "max ~5700RPM" ;;
+  idle)   upload 0A "idle ~2050RPM" ;;
+  lowmid) upload 0F "lowmid ~3500RPM" ;;
+  premid) upload 12 "premid ~4600RPM" ;;
+  mid)    upload 14 "mid ~5120RPM" ;;
+  max)    upload FF "max ~5700RPM" ;;
   status)
     echo "fans: $(cat /sys/class/hwmon/hwmon1/fan1_input) / $(cat /sys/class/hwmon/hwmon2/fan1_input) RPM"
     echo "warmste Zone: $(for z in /sys/class/thermal/thermal_zone*/temp; do cat "$z"; done | sort -n | tail -1 | awk '{print $1/1000 "C"}')" ;;
-  *) echo "usage: $0 {idle|mid|max|status}"; exit 1 ;;
+  *) echo "usage: $0 {idle|lowmid|premid|mid|max|status}"; exit 1 ;;
 esac

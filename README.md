@@ -7,6 +7,29 @@ Verwaltung des Proxmox-Hosts SCHENKER KEY 17 Pro M24 (EC VK35GTC / LIONVK35, Ton
 Lüfterkurve per EC-Kurven-Upload. Siehe `fan-control.sh`, `fan-control.service`, `ecx`, `fanctl.sh`.
 Installiert unter `/opt/fanctl/`, Unit `fan-control.service` (enabled). Log: `/var/log/fan-control.log`.
 
+**Stufen (empirisch gemessen, 2026-10-03):**
+
+| EC-Wert | Stufe | RPM (beide Lüfter) | Bemerkung |
+|---|---|---|---|
+| `0x0A` | idle | ~2050 | unterste Stufe |
+| `0x0B` | – | ~2300–2500 | zu dicht an idle |
+| `0x0C` | – | ~2600–2670 | |
+| `0x0D` | – | ~2900–2930 | |
+| `0x0E` | – | ~3170–3190 | |
+| **`0x0F`** | **lowmid** | **~3500** | **neue Stufe (gewählt)** |
+| `0x10` | – | ~4110–4400 | deutlicher Sprung |
+| `0x11` | – | ~4310–4370 | |
+| **`0x12`** | **premid** | **~4600** | **neue Stufe (gewählt)** |
+| `0x13` | – | ~4660–4720 | |
+| `0x14` | mid | ~5120 | bisherige Mittelstufe |
+| `0xFF` | max | ~5700 | oberste Stufe |
+
+**Daemon-Schwellen (`fan-control.sh`):** `TH_LOWMID=55`, `TH_PREMID=60`, `TH_MID=65`, `TH_MAX=70`, `HYS=4`, `POLL=15`.
+Verhalten: Aufheizen 55/60/65/70 °C → lowmid/premid/mid/max; Abkühlen mit 4 °C Hysterese
+(Rückfall max→mid ab <66, mid→premid ab <61, premid→lowmid ab <56, lowmid→idle ab <55).
+
+Manuell: `fanctl.sh {idle|lowmid|premid|mid|max|status}`. Logik-Test: `bash test-decide.sh` (23 Fälle).
+
 ## GPU power limit (~99 W)
 
 **Problem:** Die NVIDIA RTX 4080 Laptop GPU (Max-Q, per vfio-PCI an die VM <guest> durchgereicht)
