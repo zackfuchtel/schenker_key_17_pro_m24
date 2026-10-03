@@ -48,6 +48,15 @@ occasionally loud, and entirely reboot-free.
 The GPU power limit has to live in the guest; the fan control has to live on the host. Neither works
 from the other side — which is why the two pieces are split across both boxes.
 
+### "Why is there a hypervisor on a laptop at all?"
+
+Fair question. A Proxmox host on a *mobile Linux workstation* with an X desktop and a Sunshine streaming
+service smells less like a datacenter and more like a science project. The honest answer: **because I
+want to.** Nobody asked for this topology — and that is exactly the point, because it is *not* a
+requirement. Both halves (the `fan-control.sh` daemon and the `gpu-powerlimit` clock cap) are
+**not hypervisor-specific**: they should run on a plain Linux workstation just as well. The EC curve
+hack and the `lgc` power cap do not care whether there is a VM anywhere in the picture.
+
 ### The two problems, and the two fixes
 
 | Problem | Why the obvious fix fails | Solution |
@@ -238,6 +247,16 @@ gelegentlich laut und komplett ohne Reboot.
 
 Das GPU-Leistungslimit muss im Gast leben, die Lüftersteuerung auf dem Host. Keiner von beiden
 funktioniert von der jeweils anderen Seite — deshalb sind die zwei Teile über beide Maschinen verteilt.
+
+### „Warum denn ein Hypervisor auf einem Laptop?"
+
+Berechtigte Frage. Ein Proxmox-Host auf einem *mobilen Linux-Workstation-Laptop* mit X-Desktop und einem
+Sunshine-Streaming-Dienst riecht weniger nach Rechenzentrum und mehr nach Hobbyprojekt. Die ehrliche
+Antwort: **weil ich will.** Niemand hat nach dieser Topologie gefragt — und genau das ist der Punkt, denn
+sie ist *keine* Voraussetzung. Beide Hälften (der `fan-control.sh`-Daemon und das
+`gpu-powerlimit`-Taktlimit) sind **nicht hypervisor-spezifisch**: Sie sollen auf einer reinen
+Linux-Workstation genauso laufen. Die EC-Kurven-Methode und das `lgc`-Limit interessieren sich nicht
+dafür, ob irgendwo eine VM im Bild ist.
 
 ### Die zwei Probleme und die zwei Lösungen
 
