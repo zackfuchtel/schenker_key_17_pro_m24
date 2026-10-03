@@ -1,5 +1,5 @@
 [Unit]
-Description=GPU power limit via clock cap (~125 W) for RTX 4080 Mobile
+Description=GPU power limit via clock cap (~99 W) for RTX 4080 Mobile
 After=multi-user.target
 
 [Service]
