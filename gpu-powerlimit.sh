@@ -2,13 +2,14 @@
 # GPU-Leistungslimit per Taktobergrenze.
 # Hintergrund: NVIDIA RTX 4080 Mobile (Max-Q) hat ein per nvidia-smi -pl fixiertes TGP
 # (150 W Default; "Changing power management limit is not supported"), und der Host-EC-
-# cTGP-Weg wirkt im vfio-Passthrough nicht. Praktikabler Ersatz fuer ~105 W:
+# cTGP-Weg wirkt im vfio-Passthrough nicht. Praktikabler Ersatz fuer ~100 W:
 # Oberes SM-Taktlimit. Kalibriert bei 100 % GPU-Volllast:
 #   2055 MHz -> ~150 W | 1950 -> ~132 W | 1900 -> ~125.6 W | 1880 -> ~123 W | 1790 -> ~116 W
-#   1750 -> ~109 W | 1730 -> ~108 W | 1700 -> ~105.3 W | 1695 -> ~105.2 W | 1690 -> ~103.4 W | 1650 -> ~99 W
-# Zielwert hier: 1695 MHz ~ 105 W (105 W auf Wunsch).
+#   1750 -> ~109 W | 1700 -> ~105.3 W | 1695 -> ~105.2 W | 1690 -> ~103.4 W
+#   1670 -> ~100.1 W | 1660 -> ~98.3 W | 1650 -> ~99 W
+# Zielwert hier: 1670 MHz ~ 100 W (100 W auf Wunsch).
 
-TARGET="1695"
+TARGET="1670"
 
 # Warten, bis der NVIDIA-Treiber die GPU meldet (max. 120 s)
 for i in $(seq 1 60); do
